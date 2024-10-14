@@ -3,6 +3,8 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
+import SignupPage from "./pages/SignupPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -15,7 +17,8 @@ function App() {
         <Route path="/recipes" element={<RecipeList />} />
         <Route path="/recipes/:recipesId/update" element={<UpdateRecipe />} />
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );
