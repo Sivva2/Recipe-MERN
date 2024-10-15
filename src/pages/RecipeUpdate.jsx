@@ -1,9 +1,8 @@
 const RecipeUpdate = () => {
   return (
     <>
-      <h1>Home</h1>
+      <h1>Recipe Update</h1>
     </>
   );
 };
-
 export default RecipeUpdate;

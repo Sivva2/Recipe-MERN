@@ -10,6 +10,8 @@ import RecipeDetails from "./pages/RecipeDetails.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
 import LoginPage from "./pages/LoginPage";
 import ErrorPage from "./pages/ErrorPage";
+import RecipeList from "./pages/RecipeList";
+import RecipeUpdate from "./pages/RecipeUpdate.jsx";
 import Navbar from "./components/Navbar.jsx";
 
 function App() {
@@ -21,8 +23,11 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/recipes/new" element={<RecipeForm />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-        {/*    <Route path="/recipes" element={<RecipeList />} />
-        <Route path="/recipes/:recipesId/update" element={<UpdateRecipe />} />  */}
+        <Route path="/recipes" element={<RecipeList />} />
+        <Route
+          path="/recipes/:recipesId/update"
+          element={<RecipeUpdate />}
+        />{" "}
         <Route path="*" element={<ErrorPage />} />
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
