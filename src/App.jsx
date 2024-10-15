@@ -8,7 +8,7 @@ import AboutUs from "./pages/AboutUs.jsx";
 import RecipeForm from "./components/RecipeForm.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
 import SignupPage from "./pages/SignupPage.jsx";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/LoginPage.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeUpdate from "./pages/RecipeUpdate.jsx";
