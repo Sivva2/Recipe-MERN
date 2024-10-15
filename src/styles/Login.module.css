@@ -1,0 +1,38 @@
+.home {
+  padding: 20px;
+  background-color: var(--mantine-color-blue-light);
+  color: white;
+  align-items: center;
+}
+
+.title {
+  padding: 25px;
+  border-left: 2em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
+}
+
+.paragraphBox {
+  border-radius: 8px;
+  box-shadow: 2rem;
+  color: black;
+  align-items: center;
+}
+
+.paragraph {
+  margin-bottom: 15px;
+  max-width: fit-content;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  align-items: center;
+}
+.limitedWidth {
+  max-width: 480px;
+  justify-content: center;
+  align-items: center;
+  display: fixed;
+}
+.checkbox {
+  gap: 3px;
+  align-items: center;
+  padding: 0.2em;
+}

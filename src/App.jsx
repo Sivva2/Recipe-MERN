@@ -7,12 +7,13 @@ import HomePage from "./pages/HomePage.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import RecipeForm from "./components/RecipeForm.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
-import SignupPage from "./pages/SignupPage.jsx";
-import LoginPage from "./pages/LoginPage.jsx";
+import SignupPage2 from "./pages/SignupPage2.jsx";
+import LoginPage2 from "./pages/LoginPage2.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeUpdate from "./pages/RecipeUpdate.jsx";
 import Navbar from "./components/Navbar.jsx";
+import TermsPage from "./pages/TermsPage.jsx";
 
 function App() {
   return (
@@ -29,8 +30,9 @@ function App() {
           element={<RecipeUpdate />}
         />{" "}
         <Route path="*" element={<ErrorPage />} />
-        <Route path="/signup" element={<SignupPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/signup" element={<SignupPage2 />} />
+        <Route path="/login" element={<LoginPage2 />} />
+        <Route path="/terms" element={<TermsPage />} />
       </Routes>
     </>
   );
