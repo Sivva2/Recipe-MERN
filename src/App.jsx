@@ -27,15 +27,17 @@ function App() {
         <Route path="/about" element={<AboutUs />} />
         <Route path="/recipes/new" element={<RecipeForm />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-        <Route path="/recipes" element={<RecipeList />} />
         <Route
-          path="/recipes/:recipesId/update"
-          element={<RecipeUpdate />}
-        />{" "}
+          path="/recipes"
+          element={
+            <IsPrivate>
+              <RecipeList />
+            </IsPrivate>
+          }
+        />
+        <Route path="/recipes/:recipesId/update" element={<RecipeUpdate />} />{" "}
         <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<ErrorPage />} />
-        {/* <Route path="/signup" element={<SignupPage />} /> */}
-        {/*   <Route path="/login" element={<LoginPage />} /> */}
         <Route
           path="/signup"
           element={
@@ -54,14 +56,6 @@ function App() {
             </IsAnon>
           }
         />
-        {/*  <Route
-          path="/projects"
-          element={
-            <IsPrivate>
-              <ProjectListPage />
-            </IsPrivate>
-          }
-        /> */}
       </Routes>
     </>
   );

@@ -1,50 +1,3 @@
-/* import { Link } from "react-router-dom";
-import { useContext } from "react"; // <== IMPORT
-import { AuthContext } from "../context/auth.context"; // <== IMPORT
-
-function Navbar() {
-  // Subscribe to the AuthContext to gain access to
-  // the values from AuthContext.Provider `value` prop
-  const { isLoggedIn, user } = useContext(AuthContext); // <== ADD
-
-  //  Update the rendering logic to display different content
-  //  depending on whether the user is logged in or not
-  return (
-    <nav>
-      <Link to="/">
-        <button>Home</button>
-      </Link>
-
-     
-      {isLoggedIn && (
-        <>
-          <Link to="/about">
-            <button>About Us</button>
-          </Link>
-          <button>Logout</button>
-        </>
-      )}
-
-      {!isLoggedIn && (
-        <>
-          <Link to="/signup">
-            {" "}
-            <button>Sign Up</button>{" "}
-          </Link>
-          <Link to="/login">
-            {" "}
-            <button>Login</button>{" "}
-          </Link>
-        </>
-      )}
-    </nav>
-  );
-}
-
-export default Navbar; */
-
-////////
-
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
@@ -76,6 +29,11 @@ function Navbar() {
           <Link to="/about">
             <Button variant="contained" color="primary">
               About Us
+            </Button>
+          </Link>
+          <Link to="/recipes">
+            <Button variant="contained" color="secondary">
+              Recipes List In Private
             </Button>
           </Link>
           <Button variant="contained" color="secondary" onClick={logOutUser}>
