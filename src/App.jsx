@@ -7,13 +7,16 @@ import HomePage from "./pages/HomePage.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import RecipeForm from "./components/RecipeForm.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
-import SignupPage2 from "./pages/SignupPage2.jsx";
-import LoginPage3 from "./pages/LoginPage3.jsx";
+import SignupPage from "./pages/SignupPage.jsx";
+import LoginPage from "./pages/LoginPage.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeUpdate from "./pages/RecipeUpdate.jsx";
 import Navbar from "./components/Navbar.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
+
+import IsPrivate from "./components/IsPrivate"; // <== IMPORT
+import IsAnon from "./components/IsAnon"; // <== IMPORT
 
 function App() {
   return (
@@ -29,10 +32,36 @@ function App() {
           path="/recipes/:recipesId/update"
           element={<RecipeUpdate />}
         />{" "}
-        <Route path="*" element={<ErrorPage />} />
-        <Route path="/signup" element={<SignupPage2 />} />
-        <Route path="/login" element={<LoginPage3 />} />
         <Route path="/terms" element={<TermsPage />} />
+        <Route path="*" element={<ErrorPage />} />
+        {/* <Route path="/signup" element={<SignupPage />} /> */}
+        {/*   <Route path="/login" element={<LoginPage />} /> */}
+        <Route
+          path="/signup"
+          element={
+            <IsAnon>
+              {" "}
+              <SignupPage />{" "}
+            </IsAnon>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <IsAnon>
+              {" "}
+              <LoginPage />{" "}
+            </IsAnon>
+          }
+        />
+        {/*  <Route
+          path="/projects"
+          element={
+            <IsPrivate>
+              <ProjectListPage />
+            </IsPrivate>
+          }
+        /> */}
       </Routes>
     </>
   );

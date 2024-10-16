@@ -1,84 +1,117 @@
-/* import { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
- */
 import "../styles/Login.module.css";
-
-const API_URL = "http://localhost:5005"; // To fix when we get our backend
-
-import React, { useState } from "react";
+import React from "react";
 import {
   Box,
-  Title,
-  Text,
-  TextInput,
-  PasswordInput,
+  Typography,
+  TextField,
   Button,
-  Fieldset,
+  FormControlLabel,
   Checkbox,
-} from "@mantine/core";
+  Container,
+  Paper,
+} from "@mui/material";
 import classes from "../styles/Login.module.css";
+
+/* const API_URL = "http://localhost:5005/";
+ */
+const API_URL = import.meta.env.VITE_API_URL;
+
 function LoginPage(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(undefined);
 
-  const handleLogin = () => {
-    // Handle login logic here
-    console.log("Username:", username);
-    console.log("Password:", password);
+  const navigate = useNavigate();
+
+  const { storeToken, authenticateUser } = useContext(AuthContext);
+
+  const handleUsername = (e) => setUsername(e.target.value);
+  const handlePassword = (e) => setPassword(e.target.value);
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    const requestBody = { username, password };
+
+    axios
+      .post(`${API_URL}/auth/login`, requestBody)
+      .then((response) => {
+        console.log("JWT token", response.data.token); //takeout authToken to token if needed
+
+        storeToken(response.data.token); //takeout authToken to token if needed
+
+        authenticateUser();
+        navigate("/");
+      })
+      .catch((error) => {
+        const errorDescription = error.response.data.message;
+        setErrorMessage(errorDescription);
+        console.log("Error catched");
+      });
   };
 
   return (
-    <Box className={classes.home}>
-      <Title className={`${classes.paragraphBox} ${classes.limitedWidth}`}>
-        <h3>Login</h3>
-      </Title>
-      <Box className={`${classes.paragraphBox} ${classes.limitedWidth}`}>
-        <TextInput
-          autoComplete={["Web-dev Jr", "Web-dev Sr"]}
-          label="Username"
-          placeholder="Username"
-          value={username}
-          onChange={(event) => setUsername(event.currentTarget.value)}
-          className={`${classes.input} ${classes.limitedWidth}`}
-          visibleFrom="xs"
-          description="User name or email address"
-          withAsterisk
-        />
-
-        <PasswordInput
-          label="Password"
-          placeholder="Password"
-          value={password}
-          onChange={(event) => setPassword(event.currentTarget.value)}
-          className={`${classes.input} ${classes.limitedWidth}`}
-        />
-        <Fieldset
-          legend="Disabled"
-          disabled
-          className={`${classes.input} ${classes.limitedWidth}`}
+    <Container component="main" maxWidth="xs">
+      <Paper elevation={3} className={classes.home}>
+        <Typography
+          component="h1"
+          variant="h5"
+          className={classes.paragraphBox}
+        ></Typography>
+        <Box
+          component="form"
+          onSubmit={handleLoginSubmit}
+          className={classes.paragraphBox}
         >
-          <Checkbox
-            className={`${classes.input} ${classes.checkbox}`}
-            defaultChecked
-            label="I register for the first time"
-          />{" "}
-          <Checkbox
-            className={`${classes.input} ${classes.checkbox}`}
-            defaultChecked
-            label="I agree to sell my privacy no matter what it cost"
-          />{" "}
-          <Text> {"  "} </Text>{" "}
+          {" "}
+          <h3>Login</h3>
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            id="username"
+            label="Username"
+            name="username"
+            autoComplete="username"
+            autoFocus
+            value={username}
+            onChange={(event) => setUsername(event.currentTarget.value)}
+            className={classes.input}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
+            name="password"
+            label="Password"
+            type="password"
+            id="password"
+            autoComplete="current-password"
+            value={password}
+            onChange={(event) => setPassword(event.currentTarget.value)}
+            className={classes.input}
+          />
           <Button
-            className={`${classes.input} ${classes.checkbox}`}
-            onClick={handleLogin}
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            onSubmit={handleLoginSubmit}
+            className={classes.input}
           >
             Log In
           </Button>
-        </Fieldset>
-      </Box>
-    </Box>
+          {errorMessage && <p className="error-message">{errorMessage}</p>}
+          <p>Don't have an account yet?</p>
+          <Link to={"/signup"}> Sign Up</Link>
+        </Box>
+      </Paper>
+    </Container>
   );
 }
 
