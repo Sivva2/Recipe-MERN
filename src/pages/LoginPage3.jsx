@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import classes from "../styles/Login.module.css";
 
-/* const API_URL = "http://localhost:5005";
+/* const API_URL = "http://localhost:5005/";
  */
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -34,14 +34,14 @@ function LoginPage(props) {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { email, password };
+    const requestBody = { username, password };
 
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
-        console.log("JWT token", response.data.authToken);
+        console.log("JWT token", response.data);
 
-        storeToken(response.data.authToken);
+        storeToken(response.data.token);
 
         navigate("/");
       })
@@ -82,14 +82,14 @@ function LoginPage(props) {
           component="h1"
           variant="h5"
           className={classes.paragraphBox}
-        >
-          <h3>Login 3</h3>
-        </Typography>
+        ></Typography>
         <Box
           component="form"
           onSubmit={handleLoginSubmit}
           className={classes.paragraphBox}
         >
+          {" "}
+          <h3>Login 3</h3>
           <TextField
             variant="outlined"
             margin="normal"
