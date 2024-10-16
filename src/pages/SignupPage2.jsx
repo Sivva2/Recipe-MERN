@@ -1,6 +1,6 @@
 /* import { useState } from "react"; */
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+/* import axios from "axios"; */
 import "../styles/Login.module.css";
 
 const API_URL = "http://localhost:5005";
@@ -19,6 +19,7 @@ import {
 import classes from "../styles/Login.module.css";
 
 function SignupPage(props) {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,9 +33,9 @@ function SignupPage(props) {
     }
 
     const signupData = {
+      username,
       email,
       password,
-      Check,
     };
 
     try {
@@ -79,6 +80,19 @@ function SignupPage(props) {
             margin="normal"
             required
             fullWidth
+            id="username"
+            label="username"
+            name="username"
+            autoComplete="username"
+            value={username}
+            onChange={(event) => setUsername(event.currentTarget.value)}
+            className={classes.input}
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            required
+            fullWidth
             id="email"
             label="Email"
             name="email"
@@ -113,12 +127,6 @@ function SignupPage(props) {
             autoComplete="new-password"
             value={confirmPassword}
             onChange={(event) => setConfirmPassword(event.currentTarget.value)}
-            className={classes.input}
-          />
-          <FormControlLabel
-            control={<Checkbox value="terms" color="primary" />}
-            rel="stylesheet"
-            label="I agree to"
             className={classes.input}
           />
           <Link scr="/terms" to={"/Terms"}>

@@ -19,6 +19,7 @@ import classes from "../styles/Login.module.css";
 
 function LoginPage(props) {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {

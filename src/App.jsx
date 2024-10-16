@@ -8,7 +8,7 @@ import AboutUs from "./pages/AboutUs.jsx";
 import RecipeForm from "./components/RecipeForm.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
 import SignupPage2 from "./pages/SignupPage2.jsx";
-import LoginPage2 from "./pages/LoginPage2.jsx";
+import LoginPage3 from "./pages/LoginPage3.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeUpdate from "./pages/RecipeUpdate.jsx";
@@ -31,7 +31,7 @@ function App() {
         />{" "}
         <Route path="*" element={<ErrorPage />} />
         <Route path="/signup" element={<SignupPage2 />} />
-        <Route path="/login" element={<LoginPage2 />} />
+        <Route path="/login" element={<LoginPage3 />} />
         <Route path="/terms" element={<TermsPage />} />
       </Routes>
     </>
