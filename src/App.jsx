@@ -12,7 +12,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeUpdate from "./pages/RecipeUpdate.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/Navbar2.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
@@ -47,6 +47,8 @@ function App() {
             </IsAnon>
           }
         />
+        <Route path="/login" element={<LoginPage />} />
+        {/* 
         <Route
           path="/login"
           element={
@@ -54,8 +56,8 @@ function App() {
               {" "}
               <LoginPage />{" "}
             </IsAnon>
-          }
-        />
+          } 
+        /> */}
       </Routes>
     </>
   );
