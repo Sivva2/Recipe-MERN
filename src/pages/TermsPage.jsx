@@ -2,20 +2,20 @@ import React from "react";
 import { Typography, Container, Paper, Box } from "@mui/material";
 import classes from "../styles/Login.module.css";
 import { Link } from "react-router-dom";
-
-const HomePage = () => {
+const TermsPage = () => {
   return (
     <>
-      <h1>Home here</h1>
-
+      <h1>Terms and Conditions</h1>
+      <Link to={"/signup"}>Back to Signup</Link>
+      <p></p>
+      <p>.</p>
       <Container component="main" maxWidth="md">
         <Paper elevation={3} className={classes.terms}>
           <Box p={3}>
             <Typography variant="h5" component="h1" gutterBottom>
-              Please read carefull to our Terms and Conditions of Service,
-              before you Sign-in
+              Please read carefull to our Terms and Conditions of Service
             </Typography>
-            <p></p>
+
             <Typography variant="body1" paragraph>
               By registering for an account, you agree to be bound by these
               terms and conditions. You warrant that you are at least 18 years
@@ -36,9 +36,4 @@ const HomePage = () => {
     </>
   );
 };
-<<<<<<< HEAD
-
-export default HomePage
-=======
-export default HomePage;
->>>>>>> 7a34428d62cf3e82a77faa51a40649d4c61ce923
+export default TermsPage;
