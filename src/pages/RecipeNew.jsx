@@ -18,7 +18,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 import axios from "axios";
 import classes from "../styles/Login.module.css";
 
-const RecipeUpdate = () => {
+const RecipeNew = () => {
   const [title, setTitle] = useState("");
   const [ingredients, setIngredients] = useState([
     { name: "", quantity: "", unit: "" },
@@ -62,19 +62,34 @@ const RecipeUpdate = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const newRecipe = { title, ingredients, steps, time, servings };
 
+    if (!title || !steps || !time || !servings) {
+      window.alert(
+        "Please fill in all required fields to register the new recipe."
+      );
+      return;
+    }
+
+    const newRecipe = { title, ingredients, steps, time, servings };
+    const storedToken = localStorage.getItem("authToken");
     axios
-      .post(`${API_URL}/auth/signup`, newRecipe)
+      .post(`${API_URL}/api/recipes`, newRecipe, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
         console.log("Response to /auth/recipe ");
         window.alert("recipe registered");
-        navigate("/login");
       })
       .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-        console.log("Error catched");
+        if (error.response && error.response.status === 500) {
+          window.alert("Server error 500: Please try again later.");
+        } else {
+          const errorDescription = error.response
+            ? error.response.data.message
+            : "An error occurred";
+          setErrorMessage(errorDescription);
+        }
+        console.log("Error caught");
       });
   };
 
@@ -107,7 +122,7 @@ const RecipeUpdate = () => {
           label="Recipe Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
-          required
+          required={true}
         />
         <Typography variant="h6">Ingredients</Typography>
         {ingredients.map((ingredient, index) => (
@@ -120,15 +135,14 @@ const RecipeUpdate = () => {
               name="name"
               value={ingredient.name}
               onChange={(e) => handleIngredientChange(index, e)}
-              required
+              required={true}
             />
             <TextField
               label="Quantity"
               name="quantity"
-              type="number"
               value={ingredient.quantity}
               onChange={(e) => handleIngredientChange(index, e)}
-              required="true"
+              required={true}
             />
             <TextField
               type="string"
@@ -136,7 +150,7 @@ const RecipeUpdate = () => {
               name="unit"
               value={ingredient.unit}
               onChange={(e) => handleIngredientChange(index, e)}
-              required
+              required={true}
             />
 
             <Button
@@ -160,7 +174,7 @@ const RecipeUpdate = () => {
               value={step}
               fullWidth
               onChange={(e) => handleStepChange(index, e)}
-              required
+              required={true}
             />
             <Button
               variant="outlined"
@@ -175,7 +189,7 @@ const RecipeUpdate = () => {
           label="Time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
-          required
+          required={true}
         />
         <TextField
           label="Servings"
@@ -183,13 +197,13 @@ const RecipeUpdate = () => {
           value={servings}
           onChange={(e) => setServings(e.target.value)}
           /* onChange={(event) => setServings(event.currentTarget.value)} */
-          required
+          required={true}
         />
         <Button
           type="submit"
           variant="contained"
           color="primary"
-          href="/recipes/:recipesId/update"
+          href="/recipes/new"
         >
           Reset
         </Button>
@@ -197,7 +211,6 @@ const RecipeUpdate = () => {
           type="submit"
           variant="contained"
           color="secondary"
-          component="form"
           onSubmit={handleSubmit}
           onClick={handleSubmit}
         >
@@ -208,4 +221,4 @@ const RecipeUpdate = () => {
   );
 };
 
-export default RecipeUpdate;
+export default RecipeNew;

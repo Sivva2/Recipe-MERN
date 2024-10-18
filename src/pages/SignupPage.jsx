@@ -35,11 +35,6 @@ function SignupPage(props) {
     e.preventDefault();
     const requestBody = { username, email, password };
 
-    if (password !== confirmPassword) {
-      alert("Passwords do not match!");
-      return;
-    }
-
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
@@ -109,20 +104,7 @@ function SignupPage(props) {
             onChange={(event) => setPassword(event.currentTarget.value)}
             className={classes.input}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            name="confirmPassword"
-            label="Confirm Password"
-            type="password"
-            id="confirmPassword"
-            autoComplete="new-password"
-            value={confirmPassword}
-            onChange={(event) => setConfirmPassword(event.currentTarget.value)}
-            className={classes.input}
-          />
+
           <Link scr="/terms" to={"/Terms"}>
             terms and conditions{" "}
           </Link>

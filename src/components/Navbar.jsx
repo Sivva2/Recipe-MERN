@@ -26,6 +26,12 @@ function Navbar() {
 
       {isLoggedIn ? (
         <>
+          <Link to="/recipes/new">
+            <Button variant="contained" color="primary">
+              New Recipe
+            </Button>
+          </Link>
+
           <Link to="/about">
             <Button variant="contained" color="primary">
               About Us
