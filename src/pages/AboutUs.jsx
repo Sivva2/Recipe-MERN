@@ -7,6 +7,7 @@ const AboutUs = () => {
   return (
     <>
       <h1>About Us</h1>
+       
       <Box className={classes.home}>
       <Title order={1} className={classes.title}>
         About Us
