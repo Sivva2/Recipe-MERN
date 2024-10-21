@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useRef, useEffect, useState } from "react";
 import { AppBar, Toolbar, Typography, Box, Link } from "@mui/material";
 
@@ -65,3 +66,14 @@ function Footer() {
 }
 
 export default Footer;
+=======
+const Footer = () => {
+    return (
+      <>
+        <h1>Home</h1>
+      </>
+    );
+  };
+  
+  export default Footer
+>>>>>>> main
