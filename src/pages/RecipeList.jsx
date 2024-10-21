@@ -1,12 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {
-  Card,
-  CardContent,
-  Typography,
-  Button,
-  CardActionArea,
-} from "@mui/material";
+import { Card, CardContent, Typography, CardActionArea } from "@mui/material";
 import Grid2 from "@mui/material/Grid2";
 import { Link } from "react-router-dom";
 const RecipeList = () => {

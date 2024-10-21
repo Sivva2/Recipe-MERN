@@ -1,63 +1,69 @@
 import { useState } from "react";
-import { TextField, IconButton } from "@mui/material";
 import {
-  Edit as EditIcon,
-  Save as SaveIcon,
-  Cancel as CancelIcon,
-} from "@mui/icons-material";
-import axios from "axios";
+  IconButton,
+  ListItem,
+  ListItemText,
+  TextField,
+  Button,
+  Box,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
+import EditIcon from "@mui/icons-material/Edit";
 
-const Comment = ({ commentData, onCommentUpdated }) => {
+const Comment = ({ comment, onDelete, onUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
-  cosnt[(editedText, setEditedText)] = useState(commentData.text);
+  const [editedText, setEditedText] = useState(comment.text);
 
-  const handleEditClick = () => {
-    setIsEditing(true);
-  };
-
-  const handleCancelClick = () => {
+  const handleEdit = async () => {
+    await onUpdate(comment._id, editedText);
     setIsEditing(false);
-    setEditedText(commentData.text);
-  };
-
-  const handleSaveClick = async () => {
-    try {
-      const response = await axios.put(`/api/comments/${commentData._id}`, {
-        text: editedText,
-      });
-      setIsEditing(false);
-      onCommentUpdated(response.data);
-    } catch (error) {
-      console.error("Error updating comment", error);
-    }
   };
   return (
-    <div>
+    <ListItem className="comment-container">
       {isEditing ? (
-        <>
+        <Box className="comment-editing">
           <TextField
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
-            fullWidth
-            multiline
             variant="outlined"
+            fullWidth
+            className="comment-text"
           />
-          <IconButton onClick={handleSaveClick} color="primary">
-            <SaveIcon />
-          </IconButton>
-          <IconButton onClick={handleCancelClick} color="secondary">
-            <CancelIcon />
-          </IconButton>
-        </>
+          <div className="comment-buttons">
+            <Button onClick={handleEdit} variant="contained" size="small">
+              Save
+            </Button>
+            <Button
+              onClick={() => setIsEditing(false)}
+              variant="outlined"
+              size="small"
+            >
+              Cancel
+            </Button>
+          </div>
+        </Box>
       ) : (
-        <>
-          <p>{commentData.text}</p>
-          <IconButton onClick={handleEditClick} color="primary">
-            <EditIcon />
-          </IconButton>
-        </>
+        <Box className="comment-container">
+          <ListItemText primary={comment.text} />
+          <div className="comment-buttons">
+            <IconButton
+              edge="end"
+              aria-label="edit"
+              onClick={() => setIsEditing(true)}
+            >
+              <EditIcon />
+            </IconButton>
+            <IconButton
+              edge="end"
+              aria-label="delete"
+              onClick={() => onDelete(comment._id)}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </div>
+        </Box>
       )}
-    </div>
+    </ListItem>
   );
 };
 
