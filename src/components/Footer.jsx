@@ -59,7 +59,6 @@ function Footer() {
           </Box>
         </Toolbar>
       </AppBar>
-      Footer End;
     </>
   );
 }
