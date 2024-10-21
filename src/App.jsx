@@ -1,6 +1,3 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
@@ -14,7 +11,6 @@ import RecipeList from "./pages/RecipeList";
 import RecipeUpdate from "./pages/RecipeUpdate.jsx";
 import Navbar from "./components/Navbar.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
-
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon"; // <== IMPORT
 
@@ -26,22 +22,10 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/recipes/new" element={<RecipeForm />} />
-        <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-<<<<<<< HEAD
         <Route path="/recipes" element={<RecipeList />} />
-        <Route path="/recipes/:recipesId/update" element={<UpdateRecipe />} />
-=======
-        <Route
-          path="/recipes"
-          element={
-            <IsPrivate>
-              <RecipeList />
-            </IsPrivate>
-          }
-        />
-        <Route path="/recipes/:recipesId/update" element={<RecipeUpdate />} />{" "}
+        <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
+        <Route path="/recipes/:recipeId/update" element={<RecipeUpdate />} />
         <Route path="/terms" element={<TermsPage />} />
->>>>>>> 7a34428d62cf3e82a77faa51a40649d4c61ce923
         <Route path="*" element={<ErrorPage />} />
         <Route
           path="/signup"

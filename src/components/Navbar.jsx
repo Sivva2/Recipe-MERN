@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-const Navbar = () => {
-    return (
-      <>
-        <h1>Home</h1>
-      </>
-    );
-  };
-  
-  export default Navbar
-=======
 import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
@@ -71,4 +60,3 @@ function Navbar() {
 }
 
 export default Navbar;
->>>>>>> 7a34428d62cf3e82a77faa51a40649d4c61ce923

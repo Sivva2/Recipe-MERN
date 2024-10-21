@@ -36,9 +36,4 @@ const HomePage = () => {
     </>
   );
 };
-<<<<<<< HEAD
-
-export default HomePage
-=======
 export default HomePage;
->>>>>>> 7a34428d62cf3e82a77faa51a40649d4c61ce923
