@@ -85,7 +85,7 @@ function Navbar() {
         </Typography>
         {isLoggedIn ? (
           <>
-            <Button color="inherit" onClick={handleLogout}>
+            <Button onClick={handleLogout} color="secondary">
               Logout
             </Button>
             <Typography variant="body1" component="span">

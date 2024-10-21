@@ -2,7 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import RecipeDetails from "./pages/RecipeDetails.jsx";
@@ -12,6 +12,7 @@ import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeNew from "./pages/RecipeNew.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Footer from "./components/Footer.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
 
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
@@ -57,7 +58,9 @@ function App() {
             </IsAnon>
           } 
         /> */}
+        <Route path="/" element={<LoginPage />} />
       </Routes>
+      <Footer />
     </>
   );
 }
