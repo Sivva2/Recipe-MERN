@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 
 const AboutUs = () => {
   return (
-    <>
+    <div>
       <h1>About Us</h1>
-       
-      <Box className={classes.home}>
+
+      <Box className={classes.home}> </Box>
       <Title order={1} className={classes.title}>
         About Us
       </Title>
@@ -48,14 +48,14 @@ const AboutUs = () => {
         </Group>
         <Divider my="sm" />
       </Box>
-      
+
       <Container component="main" maxWidth="md">
         <Paper elevation={3} className={classes.terms}>
           <Box p={3}>
             <Typography variant="h5" component="h1" gutterBottom>
               Welcome to Recipe MERN
             </Typography>
-            
+
             <Typography variant="body1" paragraph>
               By registering for an account, you agree to be bound by these
               terms and conditions. You warrant that you are at least 18 years
@@ -126,9 +126,7 @@ const AboutUs = () => {
           </Box>
         </Paper>
       </Container>
-    </>
-    </>
-    
+    </div>
   );
 };
 

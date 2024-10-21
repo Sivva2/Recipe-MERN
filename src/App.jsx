@@ -20,25 +20,11 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutUs />} />
-<<<<<<< HEAD
-        <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-        <Route
-          path="/recipes"
-          element={
-            <IsPrivate>
-              <RecipeList />
-            </IsPrivate>
-          }
-        />
-        {/*   <Route path="/recipes/:recipesId/update" element={<RecipeUpdate />} /> */}
-        <Route path="/recipes/new" element={<RecipeNew />} />
-=======
+        {/*         <Route path="/about" element={<AboutUs />} /> */}
         <Route path="/recipes/new" element={<RecipeForm />} />
         <Route path="/recipes" element={<RecipeList />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
         <Route path="/recipes/:recipeId/update" element={<RecipeUpdate />} />
->>>>>>> main
         <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<ErrorPage />} />
         <Route
