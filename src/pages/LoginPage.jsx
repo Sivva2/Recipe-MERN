@@ -71,7 +71,7 @@ function LoginPage(props) {
           <TextField
             variant="outlined"
             margin="normal"
-            required
+            required={true}
             fullWidth
             id="username"
             label="Username"
@@ -85,7 +85,7 @@ function LoginPage(props) {
           <TextField
             variant="outlined"
             margin="normal"
-            required
+            required={true}
             fullWidth
             name="password"
             label="Password"

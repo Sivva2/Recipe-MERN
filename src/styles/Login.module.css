@@ -15,8 +15,10 @@
 .paragraphBox {
   border-radius: 8px;
   box-shadow: 2rem;
+  row-gap: 2rem;
   color: black;
   align-items: center;
+  margin-bottom: 8px; /* Adjust the value as needed */
 }
 
 .paragraph {
@@ -35,4 +37,22 @@
   gap: 3px;
   align-items: center;
   padding: 0.2em;
+}
+.profile {
+  margin-bottom: 16px; /* Adjust the value as needed */
+}
+
+.terms {
+  vertical-align: middle;
+  padding-left: 64px; /* Adjust the value as needed */
+  padding-right: 64px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.titlebox {
+  vertical-align: middle;
+  padding-left: 64px; /* Adjust the value as needed */
+  padding-right: 64px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }

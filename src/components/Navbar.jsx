@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   return (
-    <Box component="nav" sx={{ display: "flex", gap: 2 }}>
+    <Box component="nav" sx={{ display: "flex" }}>
       <Link to="/">
         <Button variant="contained" color="primary">
           Home
@@ -26,6 +26,12 @@ function Navbar() {
 
       {isLoggedIn ? (
         <>
+          <Link to="/recipes/new">
+            <Button variant="contained" color="primary">
+              New Recipe
+            </Button>
+          </Link>
+
           <Link to="/about">
             <Button variant="contained" color="primary">
               About Us
@@ -33,7 +39,7 @@ function Navbar() {
           </Link>
           <Link to="/recipes">
             <Button variant="contained" color="secondary">
-              Recipes List In Private
+              Recipes List
             </Button>
           </Link>
           <Button variant="contained" color="secondary" onClick={handleLogout}>

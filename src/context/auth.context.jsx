@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-//const API_URL = "http://localhost:5005";
+//const VITE_API_URL = "http://localhost:5005";
 
 // WAITING for Backend to Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
-
+console.log(API_URL);
 const AuthContext = React.createContext();
 
 function AuthProviderWrapper(props) {
