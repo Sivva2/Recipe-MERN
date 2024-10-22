@@ -34,8 +34,8 @@ function Navbar() {
   };
 
   return (
-    <AppBar position="static">
-      <Toolbar>
+    <AppBar position="static" sx={{ margin: "auto" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <IconButton
           edge="start"
           color="inherit"

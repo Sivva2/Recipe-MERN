@@ -17,7 +17,7 @@ function Navbar() {
   };
 
   return (
-    <Box component="nav" sx={{ display: "flex", gap: 2 }}>
+    <Box component="nav" sx={{ display: "flex" }}>
       <Link to="/">
         <Button variant="contained" color="primary">
           Home
@@ -39,7 +39,7 @@ function Navbar() {
           </Link>
           <Link to="/recipes">
             <Button variant="contained" color="secondary">
-              Recipes List In Private
+              Recipes List
             </Button>
           </Link>
           <Button variant="contained" color="secondary" onClick={logOutUser}>

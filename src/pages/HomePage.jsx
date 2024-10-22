@@ -1,13 +1,31 @@
 import React from "react";
-import { Typography, Container, Paper, Box } from "@mui/material";
+import {
+  Typography,
+  Container,
+  Paper,
+  Box,
+  Button,
+  CardActions,
+} from "@mui/material";
 import classes from "../styles/Login.module.css";
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
   return (
     <>
-      <h1>Home here</h1>
-
+      <Container
+        component="main"
+        maxWidth="md"
+        sx={{ marginTop: "2em", marginBottom: "1em" }}
+      >
+        <Paper elevation={3} className={classes.titlebox}>
+          <Box p={1}>
+            <Typography variant="h6" component="h1" gutterBottom>
+              <h1>Recipe MERN</h1>
+            </Typography>
+          </Box>
+        </Paper>
+      </Container>
       <Container component="main" maxWidth="md">
         <Paper elevation={3} className={classes.terms}>
           <Box p={3}>
@@ -29,7 +47,18 @@ const HomePage = () => {
               reserve the right to terminate accounts, edit or remove content,
               and cancel orders at our sole discretion.
             </Typography>
-            <Link to={"/signup"}>Back to Signup</Link>
+            <CardActions>
+              <Button
+                color="primary"
+                href={"/signup"}
+                to={"/signup"}
+                size="small"
+              >
+                <strong>Sign-Me-Up</strong>
+              </Button>
+            </CardActions>
+
+            {/* <Link to={"/signup"}>Back to Signup</Link> */}
           </Box>
         </Paper>
       </Container>

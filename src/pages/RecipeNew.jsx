@@ -10,13 +10,21 @@ import {
   FormControl,
   InputLabel,
   MenuItem,
+  Paper,
+  Card,
+  CardContent,
 } from "@mui/material";
+
+import CardActions from "@mui/material/CardActions";
+import classes from "../styles/Login.module.css";
+import { Link } from "react-router-dom";
+import { Margin, Padding, WidthFull } from "@mui/icons-material";
 
 /* const API_URL = "http://localhost:5005"; */
 const API_URL = import.meta.env.VITE_API_URL;
 /* const navigate = useNavigate(); */
 import axios from "axios";
-import classes from "../styles/Login.module.css";
+/* import classes from "../styles/Login.module.css"; */
 
 const RecipeNew = () => {
   const [title, setTitle] = useState("");
@@ -109,115 +117,174 @@ const RecipeNew = () => {
   }; */
 
   return (
-    <Container>
-      <Typography marginTop="normal" variant="h4" component="h1" gutterBottom>
-        Add New Recipe
-      </Typography>
-      <Box
-        component="form"
-        onSubmit={handleSubmit}
-        sx={{ display: "flex", flexDirection: "column", gap: 2 }}
+    <div>
+      <Container
+        sx={{ marginTop: "5em", marginBottom: "5em" }}
+        component="main"
+        maxWidth="md"
       >
-        <TextField
-          label="Recipe Title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-          required={true}
-        />
-        <Typography variant="h6">Ingredients</Typography>
-        {ingredients.map((ingredient, index) => (
-          <Box key={index} sx={{ display: "flex", gap: 1 }}>
-            <Button variant="contained" onClick={handleAddIngredient}>
-              +
-            </Button>
-            <TextField
-              label="Name"
-              name="name"
-              value={ingredient.name}
-              onChange={(e) => handleIngredientChange(index, e)}
-              required={true}
-            />
-            <TextField
-              label="Quantity"
-              name="quantity"
-              value={ingredient.quantity}
-              onChange={(e) => handleIngredientChange(index, e)}
-              required={true}
-            />
-            <TextField
-              type="string"
-              label="Unit"
-              name="unit"
-              value={ingredient.unit}
-              onChange={(e) => handleIngredientChange(index, e)}
-              required={true}
-            />
-
-            <Button
-              variant="outlined"
-              color="secondary"
-              onClick={() => handleRemoveIngredient(index)}
+        <Paper elevation={5} square={false} className={classes.terms}>
+          <Box
+            component="form"
+            onSubmit={handleSubmit}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 2,
+              border: 0,
+              flexDirection: "column",
+              gap: 2,
+              border: 0,
+            }}
+          >
+            <Typography
+              marginTop="normal"
+              variant="h6"
+              component="h1"
+              p={2}
+              gutterBottom
             >
-              X
-            </Button>
-          </Box>
-        ))}
+              <h1> Add New Recipe</h1>
+              Recipe Title
+            </Typography>
 
-        <Typography variant="h5">Steps</Typography>
-        {steps.map((step, index) => (
-          <Box key={index} sx={{ display: "flex", gap: 1 }}>
-            <Button variant="contained" onClick={handleAddStep}>
-              +
-            </Button>
             <TextField
-              label={`Step ${index + 1}`}
-              value={step}
-              fullWidth
-              onChange={(e) => handleStepChange(index, e)}
+              label="Recipe Title"
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
               required={true}
             />
-            <Button
-              variant="outlined"
-              color="secondary"
-              onClick={() => handleRemoveStep(index)}
+            <Typography
+              marginTop="normal"
+              variant="h6"
+              component="h1"
+              p={2}
+              gutterBottom
             >
-              X
-            </Button>
+              Ingredients
+            </Typography>
+            {ingredients.map((ingredient, index) => (
+              <Box key={index} sx={{ display: "flex", gap: 1 }}>
+                <Button variant="contained" onClick={handleAddIngredient}>
+                  +
+                </Button>
+                <TextField
+                  label="Name"
+                  name="name"
+                  value={ingredient.name}
+                  onChange={(e) => handleIngredientChange(index, e)}
+                  required={true}
+                />
+                <TextField
+                  label="Quantity"
+                  name="quantity"
+                  value={ingredient.quantity}
+                  onChange={(e) => handleIngredientChange(index, e)}
+                  required={true}
+                />
+                <TextField
+                  type="string"
+                  label="Unit"
+                  name="unit"
+                  value={ingredient.unit}
+                  onChange={(e) => handleIngredientChange(index, e)}
+                  required={true}
+                />
+
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => handleRemoveIngredient(index)}
+                >
+                  X
+                </Button>
+              </Box>
+            ))}
+
+            <Typography
+              marginTop="normal"
+              variant="h6"
+              component="h1"
+              p={2}
+              gutterBottom
+            >
+              Steps
+            </Typography>
+            {steps.map((step, index) => (
+              <Box key={index} sx={{ display: "flex", gap: 1 }}>
+                <Button variant="contained" onClick={handleAddStep}>
+                  +
+                </Button>
+                <TextField
+                  label={`Step ${index + 1}`}
+                  value={step}
+                  fullWidth
+                  onChange={(e) => handleStepChange(index, e)}
+                  required={true}
+                />
+                <Button
+                  variant="outlined"
+                  color="secondary"
+                  onClick={() => handleRemoveStep(index)}
+                >
+                  X
+                </Button>
+              </Box>
+            ))}
+            <Typography
+              marginTop="normal"
+              variant="h6"
+              component="h1"
+              p={2}
+              gutterBottom
+            >
+              Expected Time & Servings
+            </Typography>
+            <Box display={"flex"} gap={"7em"} sx={{ marginLeft: "5em" }}>
+              <TextField
+                label="Time"
+                value={time}
+                onChange={(e) => setTime(e.target.value)}
+                required={true}
+              />
+              <TextField
+                label="Servings"
+                type="number"
+                value={servings}
+                onChange={(e) => setServings(e.target.value)}
+                /* onChange={(event) => setServings(event.currentTarget.value)} */
+                required={true}
+              />
+            </Box>
+            <Box display={"flex"} gap={"3em"} p={4} sx={{ marginLeft: "10em" }}>
+              <Box>
+                <Button
+                  align="left"
+                  type="submit"
+                  variant="contained"
+                  color="primary"
+                  href="/recipes/new"
+                >
+                  Reset
+                </Button>
+              </Box>
+              <Box align="center" sx={{ width: 0.8 }}>
+                <Button
+                  align="right"
+                  type="submit"
+                  variant="contained"
+                  color="secondary"
+                  onSubmit={handleSubmit}
+                  onClick={handleSubmit}
+                >
+                  Submit
+                </Button>
+              </Box>
+            </Box>
           </Box>
-        ))}
-        <TextField
-          label="Time"
-          value={time}
-          onChange={(e) => setTime(e.target.value)}
-          required={true}
-        />
-        <TextField
-          label="Servings"
-          type="number"
-          value={servings}
-          onChange={(e) => setServings(e.target.value)}
-          /* onChange={(event) => setServings(event.currentTarget.value)} */
-          required={true}
-        />
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          href="/recipes/new"
-        >
-          Reset
-        </Button>
-        <Button
-          type="submit"
-          variant="contained"
-          color="secondary"
-          onSubmit={handleSubmit}
-          onClick={handleSubmit}
-        >
-          Submit
-        </Button>
-      </Box>
-    </Container>
+        </Paper>
+      </Container>
+    </div>
   );
 };
 
