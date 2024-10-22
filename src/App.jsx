@@ -31,8 +31,7 @@ function App() {
           path="/signup"
           element={
             <IsAnon>
-              {" "}
-              <SignupPage />{" "}
+              <SignupPage />
             </IsAnon>
           }
         />
@@ -40,8 +39,7 @@ function App() {
           path="/login"
           element={
             <IsAnon>
-              {" "}
-              <LoginPage />{" "}
+              <LoginPage />
             </IsAnon>
           }
         />

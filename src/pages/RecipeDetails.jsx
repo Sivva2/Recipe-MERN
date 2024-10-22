@@ -14,6 +14,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import Comment from "./Comment";
+import classes from "../styles/RecipeDetails.module.css";
 
 const RecipeDetails = () => {
   const { recipeId } = useParams();
@@ -22,6 +23,7 @@ const RecipeDetails = () => {
   const [newCommentText, setNewCommentText] = useState("");
   const [loadingComments, setLoadingComments] = useState(true);
   const [error, setError] = useState(null);
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
 
   useEffect(() => {
     axios
@@ -40,6 +42,11 @@ const RecipeDetails = () => {
       })
       .catch((error) => {
         console.error("Error fetching comments", error);
+        setError("Failed to load comments.");
+        setSnackbarOpen(true);
+      })
+      .finally(() => {
+        setLoadingComments(false);
       });
   }, [recipeId]);
 
@@ -69,6 +76,8 @@ const RecipeDetails = () => {
       })
       .catch((error) => {
         console.error("Error creating comment", error);
+        setError("Failed to add comment.");
+        setSnackbarOpen(true);
       });
   };
 
@@ -129,15 +138,20 @@ const RecipeDetails = () => {
   if (!recipe) return <CircularProgress />;
 
   return (
-    <div>
-      <Typography variant="h3" gutterBottom>
+    <div className={classes.recipeDetails}>
+      <Typography variant="h3" className={classes.recipeTitle}>
         {recipe.title}
       </Typography>
-      <Typography variant="body1">{recipe.description}</Typography>
-      <Typography variant="h6">Ingredient</Typography>
-      <List>
+      <Typography variant="body1" className={classes.recipeDescription}>
+        {recipe.description}
+      </Typography>
+
+      <Typography variant="h6" className={classes.sectionTitle}>
+        Ingredients
+      </Typography>
+      <List className={classes.ingredientList}>
         {recipe.ingredients.map((ingredient, index) => (
-          <ListItem key={index}>
+          <ListItem key={index} className={classes.ingredientItem}>
             <ListItemText>
               {ingredient.quantity} {ingredient.unit} {ingredient.name}
             </ListItemText>
@@ -145,10 +159,12 @@ const RecipeDetails = () => {
         ))}
       </List>
 
-      <Typography variant="h6">Steps</Typography>
-      <List>
+      <Typography variant="h6" className={classes.sectionTitle}>
+        Steps
+      </Typography>
+      <List className={classes.stepsList}>
         {recipe.steps.map((step, index) => (
-          <ListItem key={index}>
+          <ListItem key={index} className={classes.stepItem}>
             <ListItemText>
               {index + 1}. {step}
             </ListItemText>
@@ -156,15 +172,10 @@ const RecipeDetails = () => {
         ))}
       </List>
 
-      <Card style={{ marginTop: "2rem" }}>
+      <Card className={classes.commentsSection}>
         <CardContent>
           <Typography variant="h5">Comments</Typography>
-          <Box
-            display="flex"
-            justifyContent="space-between"
-            alignItems="center"
-            mb={2}
-          >
+          <Box className={classes.commentInput}>
             <TextField
               label="Add a comment"
               variant="outlined"
@@ -176,7 +187,7 @@ const RecipeDetails = () => {
               Submit
             </Button>
           </Box>
-          <List>
+          <List className={classes.commentList}>
             {comments.map((comment) => (
               <Comment
                 key={comment._id}

@@ -3,6 +3,7 @@ import axios from "axios";
 import { Card, CardContent, Typography, CardActionArea } from "@mui/material";
 import Grid2 from "@mui/material/Grid2";
 import { Link } from "react-router-dom";
+import classes from "../styles/RecipeList.module.css";
 const RecipeList = () => {
   const [recipes, setRecipes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -20,13 +21,22 @@ const RecipeList = () => {
     <Grid2 container spacing={3}>
       {recipes.map((recipe) => (
         <Grid2 item xs={12} md={4} key={recipe._id}>
-          <Card>
+          <Card className={classes.recipeCard}>
             <CardActionArea component={Link} to={`/recipes/${recipe._id}`}>
               <CardContent>
-                <Typography variant="h5" gutterBottom>
+                <Typography
+                  variant="h5"
+                  gutterBottom
+                  className={classes.recipeTitle}
+                >
                   {recipe.title}
                 </Typography>
-                <Typography variant="body2">{recipe.description}</Typography>
+                <Typography
+                  variant="body2"
+                  className={classes.recipeDescription}
+                >
+                  {recipe.description}
+                </Typography>
               </CardContent>
             </CardActionArea>
           </Card>

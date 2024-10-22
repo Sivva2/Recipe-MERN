@@ -36,7 +36,7 @@ function Navbar() {
               Recipes List In Private
             </Button>
           </Link>
-          <Button variant="contained" color="secondary" onClick={logOutUser}>
+          <Button variant="contained" color="secondary" onClick={handleLogout}>
             Logout
           </Button>
           <span>{user && user.name}</span>
