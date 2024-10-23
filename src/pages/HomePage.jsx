@@ -8,6 +8,7 @@ import {
   CardActions,
 } from "@mui/material";
 import classes from "../styles/Login.module.css";
+
 import { Link } from "react-router-dom";
 
 const HomePage = () => {
@@ -26,7 +27,11 @@ const HomePage = () => {
           </Box>
         </Paper>
       </Container>
-      <Container component="main" maxWidth="md">
+      <Container
+        component="main"
+        maxWidth="md"
+        sx={{ marginTop: "2em", marginBottom: "1em" }}
+      >
         <Paper elevation={3} className={classes.terms}>
           <Box p={3}>
             <Typography variant="h5" component="h1" gutterBottom>
@@ -47,7 +52,7 @@ const HomePage = () => {
               reserve the right to terminate accounts, edit or remove content,
               and cancel orders at our sole discretion.
             </Typography>
-            <CardActions>
+            {/*         <CardActions>
               <Button
                 color="primary"
                 href={"/signup"}
@@ -56,7 +61,7 @@ const HomePage = () => {
               >
                 <strong>Sign-Me-Up</strong>
               </Button>
-            </CardActions>
+            </CardActions> */}
 
             {/* <Link to={"/signup"}>Back to Signup</Link> */}
           </Box>

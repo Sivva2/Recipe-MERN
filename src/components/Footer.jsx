@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import { AppBar, Toolbar, Typography, Box, Link } from "@mui/material";
+import { AppBar, Button, Toolbar, Typography, Box, Link } from "@mui/material";
 
 function Footer() {
   const footerRef = useRef(null);
@@ -29,7 +29,7 @@ function Footer() {
 
   return (
     <>
-      <h6> Footer Start </h6>
+      {/*       <h6> Footer Start </h6> */}
       <AppBar
         position="static"
         component="footer"
@@ -47,14 +47,16 @@ function Footer() {
             </Typography>
           </Box>
           <Box>
-            <Link href="/privacy" color="inherit" sx={{ mx: 1 }}>
+            {/*      <Link href="/privacy" color="inherit" sx={{ mx: 1 }}>
               Privacy Policy
-            </Link>
+            </Link> */}
             <Link href="/terms" color="inherit" sx={{ mx: 1 }}>
               Terms of Service
             </Link>
-            <Link href="/contact" color="inherit" sx={{ mx: 1 }}>
-              Contact Us
+            <Link href="/contact">
+              <Button variant="contained" color="primary">
+                Contact Us
+              </Button>
             </Link>
           </Box>
         </Toolbar>

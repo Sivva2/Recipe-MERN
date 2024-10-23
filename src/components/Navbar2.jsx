@@ -60,46 +60,69 @@ function Navbar() {
           onClose={handleClose}
         >
           <MenuItem onClick={handleClose} component={Link} to="/">
-            Home
+            <IconButton>Home</IconButton>
+          </MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/about">
+            <IconButton>About Us</IconButton>
+          </MenuItem>
+          <MenuItem onClick={handleClose} component={Link} to="/recipes">
+            <IconButton> Recipes </IconButton>
           </MenuItem>
           {isLoggedIn && (
             <>
               <MenuItem onClick={handleClose} component={Link} to="/about">
-                About Us
+                <IconButton> About Us</IconButton>
               </MenuItem>
               <MenuItem onClick={handleClose} component={Link} to="/recipes">
-                Recipes List In Private
+                <IconButton> Recipes</IconButton>
               </MenuItem>
               <MenuItem
                 onClick={handleClose}
                 component={Link}
                 to="/recipes/new"
               >
-                New Recipe
+                <IconButton>New Recipe</IconButton>
               </MenuItem>
             </>
           )}
         </Menu>
+        <Link to="/recipes">
+          <Button variant="contained" color="primary">
+            Recipes
+          </Button>
+        </Link>
+
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-          Recipe MERN
+          Recipes MERN
         </Typography>
         {isLoggedIn ? (
           <>
-            <Button onClick={handleLogout} color="secondary">
-              Logout
-            </Button>
+            <Link to="/recipes/new">
+              <Button variant="contained" color="primary">
+                Add Recipe
+              </Button>
+            </Link>
+            <Link to="/recipes">
+              <Button onClick={logOutUser} variant="contained" color="primary">
+                Logout
+              </Button>
+            </Link>
             <Typography variant="body1" component="span">
               {user && user.name}
             </Typography>
           </>
         ) : (
           <>
-            <Button color="inherit" component={Link} to="/signup">
-              Sign Up
-            </Button>
-            <Button color="inherit" component={Link} to="/login">
-              Login
-            </Button>
+            <Link to="/signup">
+              <Button variant="contained" color="primary">
+                Sign Up
+              </Button>
+            </Link>
+            <Link to="/login">
+              <Button variant="contained" color="primary">
+                Login
+              </Button>
+            </Link>
           </>
         )}
       </Toolbar>
@@ -108,3 +131,55 @@ function Navbar() {
 }
 
 export default Navbar;
+/* 
+<Box component="nav" sx={{ display: "flex" }}>
+  <Link to="/">
+    <Button variant="contained" color="primary">
+      Home
+    </Button>
+  </Link>
+
+  {isLoggedIn ? (
+    <>
+      <Link to="/recipes/new">
+        <Button variant="contained" color="primary">
+          New Recipe
+        </Button>
+      </Link>
+
+      <Link to="/about">
+        <Button variant="contained" color="primary">
+          About Us
+        </Button>
+      </Link>
+      <Link to="/recipes">
+        <Button variant="contained" color="secondary">
+          Recipes List
+        </Button>
+      </Link>
+      <Button variant="contained" color="primary" onClick={logOutUser}>
+        Logout
+      </Button>
+      <span>{user && user.name}</span>
+    </>
+  ) : (
+    <>
+      <Link to="/signup">
+        <Button variant="contained" color="primary">
+          Sign Up
+        </Button>
+      </Link>
+      <Link to="/recipes">
+        <Button variant="contained" color="secondary">
+          Recipes List
+        </Button>
+      </Link>
+      <Link to="/login">
+        <Button variant="contained" color="primary">
+          Login
+        </Button>
+      </Link>
+    </>
+  )}
+</Box>;
+ */

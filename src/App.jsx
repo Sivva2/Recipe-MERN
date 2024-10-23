@@ -9,7 +9,7 @@ import LoginPage from "./pages/LoginPage.jsx";
 import ErrorPage from "./pages/ErrorPage";
 import RecipeList from "./pages/RecipeList";
 import RecipeNew from "./pages/RecipeNew.jsx";
-import Navbar from "./components/Navbar.jsx";
+import Navbar from "./components/Navbar2.jsx";
 import Footer from "./components/Footer.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT

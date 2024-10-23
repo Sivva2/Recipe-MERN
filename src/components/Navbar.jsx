@@ -11,7 +11,7 @@ function Navbar() {
   const handleLogout = () => {
     // Deactivate the auth token
     localStorage.removeItem("token");
-    setAuth(null);
+    setAuth("");
     // Redirect to the home page
     navigate("/");
   };
@@ -42,7 +42,7 @@ function Navbar() {
               Recipes List
             </Button>
           </Link>
-          <Button variant="contained" color="secondary" onClick={handleLogout}>
+          <Button variant="contained" color="primary" onClick={logOutUser}>
             Logout
           </Button>
           <span>{user && user.name}</span>
@@ -52,6 +52,11 @@ function Navbar() {
           <Link to="/signup">
             <Button variant="contained" color="primary">
               Sign Up
+            </Button>
+          </Link>
+          <Link to="/recipes">
+            <Button variant="contained" color="secondary">
+              Recipes List
             </Button>
           </Link>
           <Link to="/login">

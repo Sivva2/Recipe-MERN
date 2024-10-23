@@ -1,8 +1,9 @@
 .home {
-  padding: 20px;
-  background-color: var(--mantine-color-blue-light);
+  padding: 10px;
+  background-color: "primary";
+  border-top: "15em";
   color: white;
-  align-items: center;
+  align-items: bottom;
 }
 
 .title {
@@ -46,8 +47,9 @@
   vertical-align: middle;
   padding-left: 64px; /* Adjust the value as needed */
   padding-right: 64px;
-  padding-top: 32px;
-  padding-bottom: 32px;
+  padding-top: auto;
+  padding-bottom: auto;
+  margin-bottom: auto;
 }
 .titlebox {
   vertical-align: middle;
