@@ -9,10 +9,7 @@ function Navbar() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // Deactivate the auth token
-    localStorage.removeItem("token");
-    setAuth(null);
-    // Redirect to the home page
+    logOutUser();
     navigate("/");
   };
 
