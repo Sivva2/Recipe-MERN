@@ -38,14 +38,14 @@ function SignupPage(props) {
     axios
       .post(`${API_URL}/auth/signup`, requestBody)
       .then((response) => {
-        console.log("Response to /auth/signup ");
-        window.alert("User registered");
+        console.log("Response to /auth/signup", response.data);
+        window.alert("User registered successfully");
         navigate("/login");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
-        console.log("Error catched");
+        console.log("Error caught", error);
       });
   };
 

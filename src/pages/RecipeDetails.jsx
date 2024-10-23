@@ -177,6 +177,9 @@ const RecipeDetails = () => {
           <Typography variant="h5">Comments</Typography>
           <Box className={classes.commentInput}>
             <TextField
+              multiline
+              rows={2}
+              defaultValue="Default Value"
               label="Add a comment"
               variant="outlined"
               value={newCommentText}
@@ -194,6 +197,11 @@ const RecipeDetails = () => {
                 comment={comment}
                 onDelete={handleDeleteComment}
                 onUpdate={handleUpdateComment}
+                style={{
+                  wordWrap: "break-word",
+                  whiteSpace: "pre-wrap",
+                  display: "block",
+                }}
               />
             ))}
           </List>

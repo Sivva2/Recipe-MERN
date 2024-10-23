@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
-import { AppBar, Button, Toolbar, Typography, Box, Link } from "@mui/material";
+import { AppBar, Button, Toolbar, Typography, Box } from "@mui/material";
+import { Link } from "react-router-dom";
 
 function Footer() {
   const footerRef = useRef(null);
@@ -50,10 +51,10 @@ function Footer() {
             {/*      <Link href="/privacy" color="inherit" sx={{ mx: 1 }}>
               Privacy Policy
             </Link> */}
-            <Link href="/terms" color="inherit" sx={{ mx: 1 }}>
+            <Link to="/terms" color="inherit" sx={{ mx: 1 }}>
               Terms of Service
             </Link>
-            <Link href="/contact">
+            <Link to="/contact">
               <Button variant="contained" color="primary">
                 Contact Us
               </Button>

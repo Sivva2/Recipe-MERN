@@ -25,6 +25,10 @@ const Comment = ({ comment, onDelete, onUpdate }) => {
           <TextField
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
+            label="Comment"
+            multiline
+            rows={4}
+            defaultValue="Default Value"
             variant="outlined"
             fullWidth
             className="comment-text"
@@ -43,7 +47,12 @@ const Comment = ({ comment, onDelete, onUpdate }) => {
           </div>
         </Box>
       ) : (
-        <Box className="comment-container">
+        <Box
+          className="comment-container"
+          minWidth={250}
+          style={{ wordWrap: "break-word", whiteSpace: "normal" }}
+          display={"flex"}
+        >
           <ListItemText primary={comment.text} />
           <div className="comment-buttons">
             <IconButton

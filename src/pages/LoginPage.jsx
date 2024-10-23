@@ -48,6 +48,7 @@ function LoginPage(props) {
         navigate("/");
       })
       .catch((error) => {
+        console.error(error);
         const errorDescription = error.response.data.message;
         setErrorMessage(errorDescription);
         console.log("Error catched");

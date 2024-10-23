@@ -20,7 +20,6 @@ import classes from "../styles/Login.module.css";
 import { Link } from "react-router-dom";
 import { Margin, Padding, WidthFull } from "@mui/icons-material";
 
-/* const API_URL = "http://localhost:5005"; */
 const API_URL = import.meta.env.VITE_API_URL;
 /* const navigate = useNavigate(); */
 import axios from "axios";
@@ -35,6 +34,7 @@ const RecipeNew = () => {
   const [time, setTime] = useState("");
   const [servings, setServings] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [description, setDescription] = useState("");
 
   const handleIngredientChange = (index, event) => {
     const values = [...ingredients];
@@ -58,6 +58,11 @@ const RecipeNew = () => {
     setIngredients(values);
   };
 
+  const handleDescription = () => {
+    const values = [...description];
+    values;
+  };
+
   const handleAddStep = () => {
     setSteps([...steps, ""]);
   };
@@ -71,14 +76,21 @@ const RecipeNew = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!title || !steps || !time || !servings) {
+    if (!title || !steps || !time || !servings || !description) {
       window.alert(
         "Please fill in all required fields to register the new recipe."
       );
       return;
     }
 
-    const newRecipe = { title, ingredients, steps, time, servings };
+    const newRecipe = {
+      title,
+      description,
+      ingredients,
+      steps,
+      time,
+      servings,
+    };
     const storedToken = localStorage.getItem("authToken");
     axios
       .post(`${API_URL}/api/recipes`, newRecipe, {
@@ -97,7 +109,7 @@ const RecipeNew = () => {
             : "An error occurred";
           setErrorMessage(errorDescription);
         }
-        console.log("Error caught");
+        console.log("Error caught", error);
       });
   };
 
@@ -133,8 +145,6 @@ const RecipeNew = () => {
               gap: 2,
               border: 0,
               flexDirection: "column",
-              gap: 2,
-              border: 0,
             }}
           >
             <Typography
@@ -154,6 +164,23 @@ const RecipeNew = () => {
               onChange={(e) => setTitle(e.target.value)}
               required={true}
             />
+            <Typography
+              marginTop="normal"
+              variant="h6"
+              component="h1"
+              p={2}
+              gutterBottom
+            >
+              Recipe Description
+            </Typography>
+
+            <TextField
+              label="Recipe description"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required={true}
+            />
+
             <Typography
               marginTop="normal"
               variant="h6"
