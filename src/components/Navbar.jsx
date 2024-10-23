@@ -28,12 +28,7 @@ function Navbar() {
   };
 
   const handleLogout = () => {
-<<<<<<< HEAD
     logOutUser();
-=======
-    localStorage.removeItem("token");
-    setAuth(null);
->>>>>>> 151f8c264435fd79eb36565a5f3c2e5803ae5bc0
     navigate("/");
   };
 
