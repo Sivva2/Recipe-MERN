@@ -70,12 +70,6 @@ function Navbar() {
           </MenuItem>
           {isLoggedIn && (
             <>
-              <MenuItem onClick={handleClose} component={Link} to="/about">
-                <IconButton> About Us</IconButton>
-              </MenuItem>
-              <MenuItem onClick={handleClose} component={Link} to="/recipes">
-                <IconButton> Recipes</IconButton>
-              </MenuItem>
               <MenuItem
                 onClick={handleClose}
                 component={Link}

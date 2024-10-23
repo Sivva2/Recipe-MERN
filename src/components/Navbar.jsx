@@ -42,7 +42,11 @@ function Navbar() {
               Recipes List
             </Button>
           </Link>
-          <Button variant="contained" color="primary" onClick={logOutUser}>
+          <Button
+            variant="contained"
+            color="secondary.main"
+            onClick={logOutUser}
+          >
             Logout
           </Button>
           <span>{user && user.name}</span>
