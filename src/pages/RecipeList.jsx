@@ -18,7 +18,7 @@ const RecipeList = () => {
   }, []);
 
   return (
-    <Grid2 container spacing={3}>
+    <Grid2 container spacing={2} sx={{ marginTop: "1em", marginBottom: "1em" }}>
       {recipes.map((recipe) => (
         <Grid2 item xs={12} md={4} key={recipe._id}>
           <Card className={classes.recipeCard}>

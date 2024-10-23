@@ -19,13 +19,18 @@ const AboutUs = () => {
     <div>
       <Container
         component="main"
-        sx={{ marginTop: "5em", marginBottom: "5em" }}
+        sx={{ marginTop: "2em", marginBottom: "1em" }}
       >
-        <Paper elevation={5} square={false} className={classes.terms}>
+        <Paper
+          elevation={5}
+          square={false}
+          className={classes.terms}
+          sx={{ marginTop: "1em", marginBottom: "1em" }}
+        >
           <Typography variant="h6" component="h1" gutterBottom>
             <h1>About Us</h1>
           </Typography>
-          <Card elevation={3} sx={{ marginTop: "0em", marginBottom: "1em" }}>
+          {/*  <Card elevation={3} sx={{ marginTop: "0em", marginBottom: "1em" }}>
             <Box
               className={classes.paragraphBox}
               mb={4}
@@ -66,9 +71,9 @@ const AboutUs = () => {
                 </Typography>
               </CardContent>
               <CardActions>
-                {/*                 <Button size="small" color="primary">
+                               <Button size="small" color="primary">
                   Learn More
-                </Button> */}
+                </Button> 
               </CardActions>
             </Card>
             <Card elevation={3} sx={{ width: 0.5 }}>
@@ -85,12 +90,13 @@ const AboutUs = () => {
                     <GitHubIcon fontSize="xs"></GitHubIcon> /alexandrolastra{" "}
                   </Link>
                 </Typography>
-              </CardContent>
+              </CardContent> 
+                          
             </Card>
-          </Box>
+          </Box> */}
 
-          <Card elevation={3} sx={{ width: 1 }}>
-            <Box p={6}>
+          <Card elevation={3}>
+            <Box p={6} sx={{ marginTop: "1em", marginBottom: "1em" }}>
               <Typography variant="h5" component="h3" paragraph>
                 <strong> Welcome to Our Recipe MERN </strong>
               </Typography>
@@ -149,7 +155,7 @@ const AboutUs = () => {
                 cooking together!
               </Typography>
 
-              <Typography variant="body1" align="right" paragraph>
+              <Typography p={2} variant="body1" align="right" paragraph>
                 {"    "}
                 <strong> - Kevin && Alexandro </strong>
               </Typography>

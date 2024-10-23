@@ -50,7 +50,11 @@ function SignupPage(props) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{ marginTop: "2em", marginBottom: "1em" }}
+    >
       <Paper elevation={3} className={classes.home}>
         <Typography
           component="h1"
@@ -103,14 +107,20 @@ function SignupPage(props) {
             value={password}
             onChange={(event) => setPassword(event.currentTarget.value)}
             className={classes.input}
+            sx={{ marginBottom: "2em" }}
           />
 
-          <Link scr="/terms" to={"/Terms"}>
+          <Link
+            scr="/terms"
+            to={"/Terms"}
+            sx={{ marginTop: "2em", marginBottom: "1em" }}
+          >
             terms and conditions{" "}
           </Link>
           <Button
             type="submit"
             fullWidth
+            sx={{ marginTop: "2em", marginBottom: "1em" }}
             variant="contained"
             color="primary"
             className={classes.input}
