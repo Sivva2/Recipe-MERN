@@ -13,6 +13,7 @@ import {
   Checkbox,
   Container,
   Paper,
+  CardActions,
 } from "@mui/material";
 import classes from "../styles/Login.module.css";
 
@@ -54,20 +55,24 @@ function LoginPage(props) {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{ marginTop: "2em", marginBottom: "1em" }}
+    >
       <Paper elevation={3} className={classes.home}>
-        <Typography
-          component="h1"
-          variant="h5"
-          className={classes.paragraphBox}
-        ></Typography>
         <Box
           component="form"
           onSubmit={handleLoginSubmit}
           className={classes.paragraphBox}
         >
-          {" "}
-          <h3>Login</h3>
+          <Typography
+            component="h1"
+            variant="h5"
+            className={classes.paragraphBox}
+          >
+            <h3> Log In</h3>
+          </Typography>
           <TextField
             variant="outlined"
             margin="normal"
@@ -95,6 +100,7 @@ function LoginPage(props) {
             value={password}
             onChange={(event) => setPassword(event.currentTarget.value)}
             className={classes.input}
+            sx={{ marginBottom: "2em" }}
           />
           <Button
             type="submit"
@@ -108,7 +114,18 @@ function LoginPage(props) {
           </Button>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
           <p>Don't have an account yet?</p>
-          <Link to={"/signup"}> Sign Up</Link>
+          {/*           <Link to={"/signup"}> Sign Up</Link> */}
+          <CardActions>
+            <Button
+              align="center"
+              sx={{ width: 1 }}
+              href={"/signup"}
+              size="normal"
+              color="primary"
+            >
+              Sign Up
+            </Button>
+          </CardActions>
         </Box>
       </Paper>
     </Container>
