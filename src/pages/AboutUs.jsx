@@ -86,13 +86,6 @@ const AboutUs = () => {
                   </Link>
                 </Typography>
               </CardContent>
-              {/*               <CardContent>
-                <Typography variant="body2">
-                  well meaning and kindly.
-                  <br />
-                  {'"a benevolent smile"'}
-                </Typography>
-              </CardContent> */}
             </Card>
           </Box>
 
