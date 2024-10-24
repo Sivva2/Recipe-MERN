@@ -14,6 +14,7 @@ import Footer from "./components/Footer.jsx";
 import TermsPage from "./pages/TermsPage.jsx";
 import IsPrivate from "./components/IsPrivate"; // <== IMPORT
 import IsAnon from "./components/IsAnon"; // <== IMPORT
+import IngredientSearch from "./pages/IngredientSearch";
 
 function App() {
   return (
@@ -26,7 +27,7 @@ function App() {
         <Route path="/recipes/new" element={<RecipeNew />} />
         <Route path="/recipes" element={<RecipeList />} />
         <Route path="/recipes/:recipeId" element={<RecipeDetails />} />
-        {/*   <Route path="/recipes/:recipeId/update" element={<RecipeUpdate />} /> */}
+        <Route path="/search" element={<IngredientSearch />} />
         <Route path="/terms" element={<TermsPage />} />
         <Route path="*" element={<ErrorPage />} />
         <Route

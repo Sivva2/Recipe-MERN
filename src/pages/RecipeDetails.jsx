@@ -142,6 +142,9 @@ const RecipeDetails = () => {
       <Typography variant="h3" className={classes.recipeTitle}>
         {recipe.title}
       </Typography>
+      <div>
+        <img className={classes.image} src={recipe.imageUrl} />
+      </div>
       <Typography variant="body1" className={classes.recipeDescription}>
         {recipe.description}
       </Typography>
