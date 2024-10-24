@@ -37,6 +37,7 @@ const RecipeList = () => {
                 >
                   {recipe.description}
                 </Typography>
+                <img src={recipe.imageUrl} />
               </CardContent>
             </CardActionArea>
           </Card>

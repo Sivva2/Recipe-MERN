@@ -35,6 +35,7 @@ const RecipeNew = () => {
   const [servings, setServings] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
   const [description, setDescription] = useState("");
+  const [image, setImage] = useState();
 
   const handleIngredientChange = (index, event) => {
     const values = [...ingredients];
@@ -75,25 +76,28 @@ const RecipeNew = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    console.log(ingredients);
     if (!title || !steps || !time || !servings || !description) {
       window.alert(
         "Please fill in all required fields to register the new recipe."
       );
       return;
     }
+    const fData = new FormData();
+    const image = event.target.image.files[0];
+    fData.append("title", title);
+    fData.append("description", description);
+    ingredients.forEach((item) =>
+      fData.append("ingredients[]", JSON.stringify(item))
+    );
+    steps.forEach((item) => fData.append("steps[]", JSON.stringify(item)));
+    fData.append("time", time);
+    fData.append("servings", servings);
+    fData.append("imageUrl", image);
 
-    const newRecipe = {
-      title,
-      description,
-      ingredients,
-      steps,
-      time,
-      servings,
-    };
     const storedToken = localStorage.getItem("authToken");
     axios
-      .post(`${API_URL}/api/recipes`, newRecipe, {
+      .post(`${API_URL}/api/recipes`, fData, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -136,10 +140,9 @@ const RecipeNew = () => {
         maxWidth="md"
       >
         <Paper elevation={5} square={false} className={classes.terms}>
-          <Box
-            component="form"
+          <form
             onSubmit={handleSubmit}
-            sx={{
+            style={{
               display: "flex",
               flexDirection: "column",
               gap: 2,
@@ -282,6 +285,7 @@ const RecipeNew = () => {
                 /* onChange={(event) => setServings(event.currentTarget.value)} */
                 required={true}
               />
+              <input type="file" accept="image/jpg, image/png" name="image" />
             </Box>
             <Box display={"flex"} gap={"3em"} p={4} sx={{ marginLeft: "10em" }}>
               <Box>
@@ -301,14 +305,12 @@ const RecipeNew = () => {
                   type="submit"
                   variant="contained"
                   color="secondary"
-                  onSubmit={handleSubmit}
-                  onClick={handleSubmit}
                 >
                   Submit
                 </Button>
               </Box>
             </Box>
-          </Box>
+          </form>
         </Paper>
       </Container>
     </div>

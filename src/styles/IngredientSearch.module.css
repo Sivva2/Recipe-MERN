@@ -1,0 +1,76 @@
+.ingredientSearch {
+  padding: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 600px;
+  text-align: center;
+}
+
+.ingredientSearch h4 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.recipeCard {
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.recipeCard:hover {
+  transform: translateY(-5px);
+}
+
+.recipeTitle {
+  font-weight: 600;
+  color: #ff8a00;
+}
+
+.recipeDescription {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.commentList {
+  padding: 0;
+}
+
+.commentItem {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+}
+
+.commentInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+input,
+textarea {
+  border-radius: 5px;
+}
+
+button {
+  background-color: #ff8a00;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e67900;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
