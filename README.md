@@ -13,9 +13,11 @@ To get started with the project, follow these steps:
 
 # Clone the repository:
 git clone https://github.com/Sivva2/Recipe-MERN.git
+
 cd Recipe-MERN
 
-Install dependencies for both the client and server:
+# Install dependencies for both the client and server:
+
 # Install server dependencies
 cd server
 npm install
